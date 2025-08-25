@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分享漫画 - 漫画分享平台</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/icon.png">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-btn">← 返回首页</a>
+            <h1>分享漫画</h1>
+            <p class="tagline">选择书柜并上传您的漫画</p>
+        </header>
+        
+        <main>
+            <div class="step-container">
+                <div class="step active" id="step1">
+                    <h2>选择书柜</h2>
+                    <p>请选择一个书柜来上传你的漫画</p>
+                    
+                    <div class="bookshelf-grid" id="bookshelf-grid">
+                        <!-- 书柜将通过JS动态生成 -->
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button class="btn primary-btn" id="next-to-upload" disabled>下一步</button>
+                    </div>
+                </div>
+                
+                <div class="step" id="step2">
+                    <h2>上传漫画</h2>
+                    <p>请填写漫画信息并上传文件</p>
+                    
+                    <form id="upload-form">
+                        <div class="form-group">
+                            <label for="comic-title">漫画标题 *</label>
+                            <input type="text" id="comic-title" required placeholder="请输入漫画标题">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="comic-desc">漫画描述</label>
+                            <textarea id="comic-desc" rows="3" placeholder="请输入漫画描述（可选）"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="comic-file">漫画文件 *</label>
+                            <div class="file-input-container">
+                                <input type="file" id="comic-file" accept=".zip,.pdf,.epub" required>
+                                <label for="comic-file" class="file-input-label">选择文件</label>
+                                <span id="file-name">未选择文件</span>
+                            </div>
+                            <p class="file-info">支持格式: ZIP, PDF, EPUB | 最大文件大小: 500MB</p>
+                        </div>
+                        
+                        <div id="upload-status" class="upload-status"></div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn secondary-btn" id="back-to-shelves">上一步</button>
+                            <button type="submit" class="btn primary-btn" id="submit-btn">上传漫画</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="step" id="step3">
+                    <h2>上传成功！</h2>
+                    <div class="success-message">
+                        <div class="icon">✅</div>
+                        <p>你的漫画已成功上传到书柜 <span id="selected-shelf-name"></span></p>
+                        <p>新的书柜密码已生成:</p>
+                        <div class="new-password-container">
+                            <div id="new-password"></div>
+                            <button id="copy-password-btn" class="btn secondary-btn" title="点击复制">复制</button>
+                        </div>
+                        <p class="copy-feedback" id="copy-feedback"></p>
+                        <p>请将此密码分享给想要阅读漫画的人</p>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <a href="index.html" class="btn primary-btn">返回首页</a>
+                        <button class="btn secondary-btn" id="share-another">再分享一本</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="https://cdn.ably.com/lib/ably.min-1.js"></script>
+    <script src="scripts/share.js"></script>
+</body>
+</html>

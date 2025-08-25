@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择书柜 - 漫画分享平台</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/icon.png">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-btn">← 返回首页</a>
+            <h1>选择书柜</h1>
+            <p class="tagline">每个书柜都有独特的密码保护</p>
+        </header>
+        
+        <main>
+            <div class="bookshelf-selection">
+                <h2>请选择一个书柜</h2>
+                <p>输入正确密码即可查看书柜中的漫画</p>
+                
+                <div class="bookshelf-grid" id="bookshelf-grid">
+                    <!-- 书柜将通过JS动态生成 -->
+                </div>
+            </div>
+            
+            <div class="password-modal" id="password-modal">
+                <div class="modal-content">
+                    <h2>输入书柜密码</h2>
+                    <p>书柜: <span id="modal-shelf-name"></span></p>
+                    
+                    <form id="password-form">
+                        <div class="form-group">
+                            <input type="password" id="shelf-password" placeholder="请输入6位数字密码" required maxlength="6" pattern="[0-9]*" inputmode="numeric">
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn secondary-btn" id="cancel-password">取消</button>
+                            <button type="submit" class="btn primary-btn">确认</button>
+                        </div>
+                    </form>
+                    
+                    <div class="error-message" id="password-error">密码错误，请重试</div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="https://cdn.ably.com/lib/ably.min-1.js"></script>
+    <script src="scripts/view.js"></script>
+</body>
+</html>
